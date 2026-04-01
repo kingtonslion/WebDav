@@ -23,6 +23,12 @@ jobs:
     - name: Check directory structure
       run: ls -R
 
+    - name: Fix JCenter deprecation
+      working-directory: WebDAV
+      run: |
+        sed -i 's/jcenter()/mavenCentral()/g' build.gradle
+        sed -i 's/jcenter {}/mavenCentral()/g' build.gradle        
+
     - name: Build with Gradle
       working-directory: WebDAV
       run: |
@@ -33,4 +39,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
-        path: WebDAV/mobile/build/outputs/apk/debug/*.apkug/*.apk
+        path: WebDAV/mobile/build/outputs/apk/debug/*.apk
