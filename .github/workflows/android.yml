@@ -22,12 +22,13 @@ jobs:
 
     - name: Check directory structure
       run: ls -R
-
-    - name: Build with Gradle
-      run: |
-        cd WebDAV
-        chmod +x gradlew
-        ./gradlew assembleDebug --stacktrace        
+     
+    - name: Build with Gradle 
+      run: | 
+         cd WebDAV if
+         [ ! -f gradlew ]; 
+         then gradle wrapper fi 
+         ./gradlew assembleDebug --stacktrace 
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
