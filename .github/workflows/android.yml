@@ -25,8 +25,8 @@ jobs:
      
     - name: Build with Gradle 
       run: | 
-         cd WebDAV if
-         [ ! -f gradlew ]; 
+         cd WebDAV
+         if[ ! -f gradlew ]; 
          then gradle wrapper fi 
          ./gradlew assembleDebug --stacktrace 
 
